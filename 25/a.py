@@ -1,7 +1,7 @@
 def run():
     #code to run
-    # f = open('input.txt', 'r').read().strip().split('\n')
-    f = open('test.txt', 'r').read().strip().split('\n')
+    f = open('input.txt', 'r').read().strip().split('\n')
+    # f = open('test.txt', 'r').read().strip().split('\n')
 
     grid = []
 
@@ -21,7 +21,7 @@ def run():
         grid = [x.copy() for x in ng]
         moves += 1
 
-    print(moves-1)
+    print(moves+1)
 
 def move_east(grid):
 
@@ -31,7 +31,7 @@ def move_east(grid):
         for j in range(len(grid[0])):
             if grid[i][j] == '>':
                 nj = j+1 if j+1 < len(grid[0]) else 0
-                if ng[i][nj] == '.':
+                if grid[i][nj] == '.':
                     ng[i][j] = '.'
                     ng[i][nj] = '>'
        
@@ -45,7 +45,7 @@ def move_south(grid):
         for j in range(len(grid[0])):
             if grid[i][j] == 'v':
                 ni = i+1 if i+1 < len(grid) else 0
-                if ng[ni][j] == '.':
+                if grid[ni][j] == '.':
                     ng[i][j] = '.'
                     ng[ni][j] = 'v'
 
