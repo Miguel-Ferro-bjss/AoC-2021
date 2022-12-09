@@ -9,31 +9,24 @@ def run():
         row = [x for x in line]
         grid.append(row)
 
-    print(grid)
-    print()
-    new_grid = move_east(grid).copy()
     moves = 0
+    while(True):
 
-    print(grid)
-    print()
-    print(new_grid)
+        ng = move_east(grid)
+        ng = move_south(ng)
 
+        if (ng == grid):
+            break
+        
+        grid = [x.copy() for x in ng]
+        moves += 1
 
-    # while(new_grid != grid):
-    #     new_grid = move_east(grid.copy())
-    #     if new_grid == grid:
-    #         break
-    #     moves += 1
-    #     grid = new_grid.copy()
-    #     new_grid = move_south(grid.copy())
-    #     if new_grid == grid:
-    #         break
-    #     moves += 1
-
-    print(moves)
+    print(moves-1)
 
 def move_east(grid):
-    ng = grid.copy()
+
+    ng = [x.copy() for x in grid]
+
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j] == '>':
@@ -45,7 +38,9 @@ def move_east(grid):
     return ng
 
 def move_south(grid):
-    ng = [x for x in grid]
+
+    ng = [x.copy() for x in grid]
+
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j] == 'v':
